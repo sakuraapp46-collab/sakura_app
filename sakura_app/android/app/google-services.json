@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "258217617703",
+    "project_id": "sakura-app-56183",
+    "storage_bucket": "sakura-app-56183.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258217617703:android:340d21515d9ebf882c2102",
+        "android_client_info": {
+          "package_name": "com.example.sakura_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO9d8R26uiX_0CrHIGqZhq9X9mJ2lTBcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
