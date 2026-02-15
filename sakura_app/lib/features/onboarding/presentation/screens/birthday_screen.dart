@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/validators.dart';
 import '../onboarding_provider.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../core/widgets/primary_button.dart';
 
 class BirthdayScreen extends StatefulWidget 
 {
@@ -42,9 +43,12 @@ class _BirthdayScreenState extends State<BirthdayScreen>
       body: Center
         (
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Text(_selected == null ? 'Pick your birthday' : 'Selected: ${formatDate(_selected!)}'),
+        Text(
+          _selected == null ? 'Pick your birthday' : 'Selected: ${formatDate(_selected!)}',
+          textAlign: TextAlign.center,
+        ),
         const SizedBox(height: 12),
-        ElevatedButton(onPressed: () async 
+        PrimaryButton(onPressed: () async 
         {
           final now = DateTime.now();
           final picked = await showDatePicker
@@ -60,10 +64,10 @@ class _BirthdayScreenState extends State<BirthdayScreen>
           }
         },
 
-      child: const Text('Choose date'),
+      text: 'Choose date',
       ),
       const SizedBox(height: 12),
-      ElevatedButton(onPressed: _next, child: const Text('Continue')),
+      PrimaryButton(text: 'Continue', onPressed: _next),
       ]),
       ),
     );

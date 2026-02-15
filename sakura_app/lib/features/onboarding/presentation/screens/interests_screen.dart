@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../domain/enums.dart';
 import '../onboarding_provider.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../core/widgets/primary_button.dart';
 
 class InterestsScreen extends StatefulWidget 
 {
@@ -38,11 +39,14 @@ class _InterestsScreenState extends State<InterestsScreen>
         [
             ...options.map((g) => CheckboxListTile(
             value: selected.contains(g),
-            title: Text(g.name),
+            title: Text(
+              g.name,
+              textAlign: TextAlign.center,
+            ),
             onChanged: (v) => setState(() => v! ? selected.add(g) :
             selected.remove(g)),
           )),
-          ElevatedButton(onPressed: _next, child: const Text('Continue')), 
+          PrimaryButton(text: 'Continue', onPressed: _next), 
         ],
       ),
     );

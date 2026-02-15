@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sakura_app/features/onboarding/domain/enums.dart';
 import 'package:sakura_app/routes/app_routes.dart';
 import '../onboarding_provider.dart';
+import '../../../../core/widgets/primary_button.dart';
 
 class ClientServicesScreen extends StatefulWidget
 {
@@ -42,11 +43,14 @@ class _ClientServicesScreenState extends State<ClientServicesScreen>
               ...items.map((s) => CheckboxListTile
               (
                 value: selected.contains(s),
-                title: Text(s.label),
+                title: Text(
+                  s.label,
+                  textAlign: TextAlign.center,
+                ),
                 onChanged: (v) => setState(() => v! ? selected.add(s) : selected.remove(s)),
               )),
               const SizedBox(height: 12,),
-              ElevatedButton(onPressed: _next, child: const Text('Continue')),
+              PrimaryButton(text: 'Continue', onPressed: _next),
           ],
       ),
     );

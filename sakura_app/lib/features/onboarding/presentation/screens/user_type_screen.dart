@@ -30,7 +30,10 @@ class UserTypeScreen extends StatelessWidget
             padding: const EdgeInsets.all(16.0),
             child: Column(
                 children: [
-                    const Text('Please select your user type:'),
+                    const Text(
+                      'Please select your user type:',
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 12),
                     PrimaryButton( text: 'CLIENT', onPressed: () => _go(context, UserType.client),),
                     PrimaryButton( text: 'FREELANCE', onPressed: () => _go(context, UserType.freelancer),),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../domain/enums.dart';
 import '../onboarding_provider.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../core/widgets/primary_button.dart';
 
 class PricingScreen extends StatefulWidget 
 {
@@ -80,16 +81,18 @@ class _PricingScreenState extends State<PricingScreen>
                 child: TextField
                 (
                   controller: _controllers[s],
+                  textAlign: TextAlign.center,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration
                   (
                     labelText: '${s.label} - Price',
                     prefixText: '\$',
                     border: const OutlineInputBorder(),
+                    floatingLabelAlignment: FloatingLabelAlignment.center,
                   ),
                 ),
               )),
-              ElevatedButton(onPressed: _next, child: const Text('Continue')),
+              PrimaryButton(text: 'Continue', onPressed: _next),
           ],
       )
     );

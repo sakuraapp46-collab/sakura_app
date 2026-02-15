@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../domain/enums.dart';
 import '../onboarding_provider.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../core/widgets/primary_button.dart';
 
 class FreelancerServicesScreen extends StatefulWidget
 {
@@ -42,13 +43,14 @@ class _FreelancerServicesScreenState extends State<FreelancerServicesScreen>
               ...items.map((s) => CheckboxListTile
               (
                 value: selected.contains(s),
-                title: Text(s.label),
+                title: Text(
+                  s.label,
+                  textAlign: TextAlign.center,
+                ),
                 onChanged: (v) => setState(() => v! ? selected.add(s) : selected.remove(s)),
               )),
               const SizedBox(height: 12,),
-              ElevatedButton(onPressed: _next, child: const Text('Continue')),
-              const SizedBox(height: 12),
-              ElevatedButton(onPressed: _next, child: const Text('Continue')),
+              PrimaryButton(text: 'Continue', onPressed: _next),
           ],
       )
     );

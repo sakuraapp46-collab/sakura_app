@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../onboarding_provider.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../../core/widgets/primary_button.dart';
 
 class LocationScreen extends StatefulWidget 
 {
@@ -38,12 +39,21 @@ class _LocationScreenState extends State<LocationScreen>
       padding: const EdgeInsets.all(16),
       child: Column(children: 
       [
-        const Text('Enter your city/area (autocomplete later)'),
+        const Text(
+          'Enter your city/area (autocomplete later)',
+          textAlign: TextAlign.center,
+        ),
         const SizedBox(height: 8),
-        TextField(controller: _ctrl, decoration: const
-        InputDecoration(labelText: 'Location')),
+        TextField(
+          controller: _ctrl,
+          textAlign: TextAlign.center,
+          decoration: const InputDecoration(
+            labelText: 'Location',
+            floatingLabelAlignment: FloatingLabelAlignment.center,
+          ),
+        ),
         const SizedBox(height: 8),
-        ElevatedButton(onPressed: _next, child: const Text('Continue')),
+        PrimaryButton(text: 'Continue', onPressed: _next),
       ]),
       ),
     );

@@ -62,14 +62,27 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const Text('Login with your phone number'),
+            const Text(
+              'Login with your phone number',
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 12),
+            if (PhoneAuthService.isMockMode)
+              const Padding(
+                padding: EdgeInsets.only(bottom: 12),
+                child: Text(
+                  'Dev mode active. Any phone works; OTP is 123456.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
             TextField(
               controller: _ctrl,
+              textAlign: TextAlign.center,
               keyboardType: TextInputType.phone,
               decoration: const InputDecoration(
                 labelText: 'Phone Number (e.g. +15551234567)',
                 border: OutlineInputBorder(),
+                floatingLabelAlignment: FloatingLabelAlignment.center,
               ),
             ),
             const SizedBox(height: 14),

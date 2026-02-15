@@ -9,9 +9,17 @@ class PrimaryButton extends StatelessWidget
     @override
     Widget build(BuildContext context) 
     {
-        return FilledButton(
-            onPressed: onPressed,
-            child: Text(text),
+        return Center(
+          child: SizedBox(
+            width: 220,
+            child: FilledButton(
+              onPressed: onPressed,
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
         );
     }
 }

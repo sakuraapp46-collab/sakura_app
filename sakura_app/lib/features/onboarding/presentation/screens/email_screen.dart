@@ -40,14 +40,19 @@ class _EmailScreenState extends State<EmailScreen>
             padding: const EdgeInsets.all(16.0),
             child: Column(
                 children: [
-                    const Text('Enter you email address'),
+                    const Text(
+                      'Enter you email address',
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 12),
                     TextField(
                         controller: _ctrl,
+                        textAlign: TextAlign.center,
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Email',
+                            floatingLabelAlignment: FloatingLabelAlignment.center,
                         ),
                     ),
                     PrimaryButton(

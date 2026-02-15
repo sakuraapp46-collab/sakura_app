@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/validators.dart';
+import '../../../../core/widgets/primary_button.dart';
 import '../onboarding_provider.dart';
 import '../../repo/onboarding_repository.dart';
 import '../../../../routes/app_routes.dart';
@@ -46,21 +47,17 @@ class _DescriptionScreenState extends State<DescriptionScreen>
   m.setDescription(text);
 
   final user = FirebaseAuth.instance.currentUser;
-  if (user == null) 
-  {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:
-    Text('Not signed in')));
-    return;
-  }
+  final userId = user?.uid ?? 'dev_${(m.phoneNumber ?? 'guest').replaceAll(RegExp(r'[^0-9]'), '')}';
+  final phoneNumber = user?.phoneNumber ?? m.phoneNumber;
   setState(() => _loading = true);
 
   try 
   {
     final repo = OnboardingRepository();
-    final photoUrls = await repo.uploadPhotos(user.uid, m.photos);
+    final photoUrls = await repo.uploadPhotos(userId, m.photos);
     final data = 
     {
-      'phoneNumber': user.phoneNumber,
+      'phoneNumber': phoneNumber,
       'email': m.email,
       'userType': m.userType,
       'clientServices': m.clientInterests.map((e) => e.name).toList(),
@@ -75,7 +72,7 @@ class _DescriptionScreenState extends State<DescriptionScreen>
       'createdAt': FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     };
-    await repo.saveProfile(userId: user.uid, data: data);
+    await repo.saveProfile(userId: userId, data: data);
     if (!mounted) return;
     Navigator.pushNamedAndRemoveUntil(context, AppRoutes.done, (_) => false);
   } 
@@ -101,12 +98,18 @@ class _DescriptionScreenState extends State<DescriptionScreen>
       [
         TextField(
         controller: _ctrl,
+        textAlign: TextAlign.center,
         maxLength: 500,
         maxLines: 6,
-        decoration: const InputDecoration(labelText: 'Tell us about you (no external contacts)'),),
+        decoration: const InputDecoration(
+          labelText: 'Tell us about you (no external contacts)',
+          floatingLabelAlignment: FloatingLabelAlignment.center,
+        ),),
         const SizedBox(height: 12),
-        ElevatedButton(onPressed: _loading ? null : _finish, child:
-        Text(_loading ? 'Saving...' : 'Finish')),
+        PrimaryButton(
+          text: _loading ? 'Saving...' : 'Finish',
+          onPressed: _loading ? null : _finish,
+        ),
       ]),
       ),
     );

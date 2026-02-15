@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../../core/widgets/primary_button.dart';
 import '../onboarding_provider.dart';
 import '../../../../routes/app_routes.dart';
 class PhotoUploadScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ itemBuilder: (_, i) => Image.file(m.photos[i], fit: BoxFit.cover),
 ),
 bottomNavigationBar: Padding(
 padding: const EdgeInsets.all(12),
-child: ElevatedButton(onPressed: _next, child: const Text('Continue')),
+child: PrimaryButton(text: 'Continue', onPressed: _next),
 ),
 );
 }
