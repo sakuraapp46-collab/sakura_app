@@ -21,7 +21,7 @@ class _BirthdayScreenState extends State<BirthdayScreen>
     {
       return;
     }
-    if (isAtLeast20YearsOld(_selected!))
+    if (!isAtLeast20YearsOld(_selected!))
     {
       showDialog(context: context, builder: (_) => AlertDialog(title: const
       Text('Sorry'), content: const Text('The minimum age is 20.'), actions:
